@@ -6,11 +6,7 @@ const config = Object.assign({}, base, {
     file: file('esm'),
     format: 'es'
   },
-  external: [
-    'lodash',
-    'popper.js',
-    'vue-resize'
-  ]
+  external: []
 })
 
 export default config

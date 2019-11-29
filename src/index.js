@@ -1,4 +1,4 @@
-import Table from './components/index.vue'
+import Table from './components/Table.vue'
 import TableColumn from './components/TableColumn'
 
 const components = [Table, TableColumn]
