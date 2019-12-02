@@ -1,0 +1,16 @@
+docs/
+demo-src/
+build/
+tests/
+.babelrc
+.git/
+.vscode/
+node_modules/
+docs/
+nginx/
+public/
+package-lock.json
+.editorconfig
+.gitignore
+.npmignore
+*.log

@@ -12,7 +12,7 @@
         <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.0-orange.svg"></a> -->
       </nav>
       <router-link v-for="d in routes" :key="d.path" :to="d.path">{{ d.name }}</router-link>
-      <div class="description">Customizable &amp; reactive tooltips/popovers/dropdowns with smart positioning</div>
+      <div class="description">{{ description }}</div>
     </header>
 
     <router-view />
@@ -27,13 +27,14 @@
 
 <script>
 import routes from './views/routes'
-import { name } from './config'
+import { name, description } from './config'
 
 export default {
   data() {
     return {
       routes: routes.filter(route => route.path.length > 1),
-      name
+      name,
+      description
     }
   }
 }

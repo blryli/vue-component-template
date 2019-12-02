@@ -3,6 +3,9 @@ import resolve from 'rollup-plugin-node-resolve'
 import vue from 'rollup-plugin-vue'
 import cjs from 'rollup-plugin-commonjs'
 import replace from 'rollup-plugin-replace'
+import css from 'rollup-plugin-css-only'
+import CleanCSS from 'clean-css'
+import { writeFileSync, readFileSync } from 'fs'
 
 const config = require('../package.json')
 
@@ -15,10 +18,18 @@ export default {
   input: 'src/index.js',
   plugins: [
     resolve({
-      mainFields: ['module', 'jsnext:main', 'main', 'browser']
+      mainFields: ['module', 'jsnext:main', 'main', 'browser'],
+      extensions: ['.vue']
     }),
     vue({
-      scss: true
+      css: false
+    }),
+    css({
+      output(style) {
+        const file = require.resolve('vue-virtual-scroller/dist/vue-virtual-scroller.css')
+        style += readFileSync(file, { encoding: 'utf8' })
+        writeFileSync(`dist/${name}.css`, new CleanCSS().minify(style).styles)
+      }
     }),
     babel({
       exclude: 'node_modules/**',
