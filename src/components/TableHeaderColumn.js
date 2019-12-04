@@ -17,7 +17,8 @@ export default {
     }
   },
   render(h) {
-    const slot = this.column.header ? this.column.header : this.column.type === 'selection' ? this.renderSelection(h) : this.column.type === 'index' ? (this.column.label || '#') : this.column.label
+    const { column, columnIndex: $index } = this
+    const slot = this.column.renderHeader(h, { column, $index }) || this.column.header || (this.column.type === 'selection' ? this.renderSelection(h) : this.column.type === 'index' ? (this.column.label || '#') : this.column.label)
 
     return h('div', {
       class: this.columnClass,

@@ -14,7 +14,7 @@ export default {
       const slot = h('VTableHeaderColumn', { attrs: { column, columnIndex: columnIndex }})
       return acc.concat([slot])
     }, [])
-    return h('div', { class: 'v-table__header-wrapper', ref: 'headerWrapper' }, [
+    return h('div', { class: 'v-table__header-container', ref: 'headerWrapper' }, [
       h('div', {
         class: 'v-table__header',
         style: this.table.rowStyle,

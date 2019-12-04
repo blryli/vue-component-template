@@ -9,47 +9,32 @@
       highlight-current-row
       @selection-change="selectionChange"
       @row-click="rowClick"
-      @row-dblclick="rowDblClick"
     >
       <v-table-column v-if="checked" key="checkbox" fixed="left" type="selection" :width="40" />
-      <v-table-column v-else key="radio" :width="60" fixed="left">
+      <v-table-column v-else key="radio" :width="40" fixed="left">
         <template slot-scope="scope">
-          <el-radio v-model="radio" class="radio" style="padding: 6px" :label="scope.$index">&nbsp;</el-radio>
+          <el-radio v-model="radio" class="radio" :label="scope.$index">&nbsp;</el-radio>
         </template>
       </v-table-column>
-      <v-table-column type="index" :min-width="60" fixed="left" label="序号" />
+      <v-table-column type="index" :min-width="60" fixed="left" label="序号">
+        <template slot="header">这是序号</template>
+        <template slot-scope="scope">{{ scope.$index + 1 }}</template>
+      </v-table-column>
       <v-table-column label="标题1" prop="asn" :min-width="100" />
       <v-table-column label="标题2" :min-width="150">
         <template slot-scope="scope">{{ scope.row.name }}</template>
       </v-table-column>
-      <v-table-column label="标题3" prop="asn" :min-width="100" />
+      <v-table-column label="标题3" prop="city" :min-width="100" />
       <v-table-column label="标题4" show-overflow-tooltip :min-width="150">
         <template>溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字</template>
       </v-table-column>
-      <v-table-column label="标题5" prop="asn" :min-width="150" />
+      <v-table-column label="标题5" prop="datetime" :min-width="150" />
       <v-table-column label="标题6" prop="name" :min-width="150" />
-      <v-table-column label="标题1" prop="asn" :min-width="100" />
-      <v-table-column label="标题2" :min-width="150">
-        <template slot-scope="scope">{{ scope.row.name }}</template>
-      </v-table-column>
-      <v-table-column label="标题3" prop="asn" :min-width="100" />
-      <v-table-column label="标题4" show-overflow-tooltip :min-width="150">
-        <template>溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字</template>
-      </v-table-column>
-      <v-table-column label="标题5" prop="asn" :min-width="150" />
-      <v-table-column label="标题6" prop="name" :min-width="150" />
-      <v-table-column label="标题1" prop="asn" :min-width="100" />
-      <v-table-column label="标题2" :min-width="150">
-        <template slot-scope="scope">{{ scope.row.name }}</template>
-      </v-table-column>
-      <v-table-column label="标题3" prop="asn" :min-width="100" />
-      <v-table-column label="标题4" show-overflow-tooltip :min-width="150">
-        <template>溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字</template>
-      </v-table-column>
-      <v-table-column label="标题5" prop="asn" :min-width="150" />
-      <v-table-column label="标题6" prop="name" :min-width="150" />
-      <v-table-column label="标题7" :min-width="150">
+      <v-table-column label="标题7" :min-width="120">
         <template slot-scope="scope">{{ scope.row.message }}</template>
+      </v-table-column>
+      <v-table-column v-for="(d, i) in forData" :key="i" :label="d.label" :min-width="150" :render-header="renderHeader">
+        <template slot-scope="scope">{{ scope.row[d.prop] }}</template>
       </v-table-column>
       <v-table-column label="操作" :min-width="100">
         <template>
@@ -75,7 +60,12 @@ export default {
     return {
       radio: null,
       checked: true,
-      data: []
+      data: [],
+      forData: [
+        { prop: 'city', label: '标题' },
+        { prop: 'name', label: '标题' },
+        { prop: 'message', label: '标题' }
+      ]
     }
   },
   mounted() {
@@ -83,8 +73,11 @@ export default {
       this.data = mock.mock({
         'array|1000': [
           {
-            'message': '@name',
-            'name': '@name',
+            'message': '@email',
+            'name': '@cname',
+            'email': '@email',
+            'city': '@city',
+            'datetime': '@datetime',
             'asn': /asn10000[1-9]/,
             'gNo|+1': 1,
             'contrItem': '5',
@@ -96,7 +89,9 @@ export default {
     }, 1000)
   },
   methods: {
-    change() {},
+    renderHeader(h, { column, $index }) {
+      return h('div', {}, [column.label, $index - 1])
+    },
     selectionChange(val) {
       console.log(val)
       // console.log(`selection change > ${JSON.stringify(val, null, 2)}`)
@@ -104,20 +99,11 @@ export default {
     rowClick(row, index, event) {
       console.log(`click row > ${JSON.stringify(row, null, 2)}`)
     },
-    rowDblClick(row, index, event) {
-      console.log(`dbclick row > ${JSON.stringify(row, null, 2)}`)
-    },
     toggleRowSelection() {
       this.$refs.table.toggleRowSelection(this.data[1])
     },
     toggleAllSelection() {
       this.$refs.table.toggleAllSelection()
-    },
-    cellMouseEnter(row, column, cell, event) {
-      console.log(row)
-      console.log(column)
-      console.log(cell)
-      console.log(event)
     }
   }
 }

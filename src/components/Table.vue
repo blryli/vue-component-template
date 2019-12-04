@@ -4,7 +4,10 @@
       <slot />
     </div>
     <!-- header -->
-    <v-table-header ref="TableHeader" />
+    <div class="v-table__header-wrapper">
+      <v-table-header ref="TableHeader" />
+      <div v-show="bodyOverflowY" class="v-table__header-gutter"></div>
+    </div>
     <!-- body -->
     <div class="v-table__body-wrapper">
       <DynamicScroller ref="DynamicScroller" :data="data" />
@@ -98,8 +101,8 @@ export default {
 .v-table__shadow-left, .v-table__shadow-right{
   position: absolute;
   top: 0;
+  bottom: 17px;
   width: 1px;
-  height: calc(100% - 17px);
 }
 .v-table__shadow-left{
   box-shadow: 5px 0px 8px rgba(0, 0, 0, 0.5);
@@ -127,21 +130,32 @@ export default {
 }
 
 /** header */
-.v-table__header-wrapper {
+.v-table__header-wrapper{
+  position: relative;
+}
+.v-table__header-container {
   position: relative;
   overflow-x: auto;
   overflow-y: hidden;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
 }
-.is-border .v-table__header-wrapper{
-  border-right: 1px solid #ddd;
+.v-table__header-gutter{
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 17px;
+  box-sizing: border-box;
 }
-.v-table__header-wrapper::-webkit-scrollbar {
+.is-border .v-table__header-gutter{
+  border-left: 1px solid #ddd;
+}
+.v-table__header-container::-webkit-scrollbar {
   height: 0 !important;
 }
-.is-overflow-y .v-table__header-wrapper{
-  margin-right: 17px;
+.is-overflow-y .v-table__header-container{
+  overflow-y: scroll;
 }
 .v-table__header, .v-table__body {
   position: relative;
@@ -159,7 +173,7 @@ export default {
 .v-table__header [class*='_column_'], .v-table__body [class*='_column_']{
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 8px 0;
   background-color: #fff;
   box-sizing: border-box;
 }

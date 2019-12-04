@@ -64,11 +64,16 @@ export default {
       range.setStart(cell, 0)
       range.setEnd(cell, cell.childNodes.length)
       const rangeWidth = range.getBoundingClientRect().width
-      if (rangeWidth > this.width) {
+      const padding = parseInt(this.getStyle(cell, 'paddingLeft')) + parseInt(this.getStyle(cell, 'paddingRight'))
+      if (padding + rangeWidth > this.width) {
         this.table.show = true
         this.table.reference = cell
         this.table.popoverSlot = slot
       }
+    },
+    getStyle(elem, prop) {
+      if (prop) prop = prop.replace(/([A-Z])/g, str => '-' + str.toLowerCase())
+      return window.getComputedStyle(elem, null).getPropertyValue(prop)
     },
     handleMouseleave(event, slot) {
       const { item, column } = this

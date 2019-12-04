@@ -3,6 +3,7 @@ export default {
   props: {
     type: String,
     width: { type: Number, default: 0 },
+    renderHeader: { type: Function, default: () => {} },
     minWidth: { type: Number, default: 0 },
     label: { type: String, default: '' },
     prop: { type: String, default: '' },
