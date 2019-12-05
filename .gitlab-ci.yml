@@ -6,20 +6,20 @@ publish:
   cache:
     key: vue-table-virtual-scroller
     paths:
-      - $(pwd)/.yarn-cache
+      - $(pwd)/.npm-cache
       - node_modules/
   script:
-    - yarn config set registry 'https://registry.npm.taobao.org'
-    - yarn config set sass_binary_site "https://npm.taobao.org/mirrors/node-sass/"
-    - yarn config set phantomjs_cdnurl "http://cnpmjs.org/downloads"
-    - yarn config set electron_mirror "https://npm.taobao.org/mirrors/electron/"
-    - yarn config set sqlite3_binary_host_mirror "https://foxgis.oss-cn-shanghai.aliyuncs.com/"
-    - yarn config set profiler_binary_host_mirror "https://npm.taobao.org/mirrors/node-inspector/"
-    - yarn config set chromedriver_cdnurl "https://cdn.npm.taobao.org/dist/chromedriver"
-    - yarn config set cache-folder $(pwd)/.yarn-cache
-    - yarn install
-    - yarn run build
+    - npm config set registry 'https://registry.npm.taobao.org'
+    - npm config set sass_binary_site "https://npm.taobao.org/mirrors/node-sass/"
+    - npm config set phantomjs_cdnurl "http://cnpmjs.org/downloads"
+    - npm config set electron_mirror "https://npm.taobao.org/mirrors/electron/"
+    - npm config set sqlite3_binary_host_mirror "https://foxgis.oss-cn-shanghai.aliyuncs.com/"
+    - npm config set profiler_binary_host_mirror "https://npm.taobao.org/mirrors/node-inspector/"
+    - npm config set chromedriver_cdnurl "https://cdn.npm.taobao.org/dist/chromedriver"
+    - npm config set cache-folder $(pwd)/.npm-cache
+    - npm install
+    - npm run build
     - 'echo export default $CI_PIPELINE_ID > version.js'
-    - yarn publish --registry=http://192.168.88.9:8081/repository/npmlocal/
+    - npm publish --registry=http://192.168.88.9:8081/repository/npmlocal/
   tags:
     - docker 
