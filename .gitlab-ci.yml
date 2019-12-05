@@ -6,7 +6,7 @@ publish:
   cache:
     key: vue-table-virtual-scroller
     paths:
-      - $(pwd)/.npm-cache
+      - $(pwd)/.yarn-cache
       - node_modules/
   script:
     - yarn config set registry 'https://registry.npm.taobao.org'
@@ -16,10 +16,10 @@ publish:
     - yarn config set sqlite3_binary_host_mirror "https://foxgis.oss-cn-shanghai.aliyuncs.com/"
     - yarn config set profiler_binary_host_mirror "https://npm.taobao.org/mirrors/node-inspector/"
     - yarn config set chromedriver_cdnurl "https://cdn.npm.taobao.org/dist/chromedriver"
-    - yarn config set cache-folder $(pwd)/.npm-cache
-    - npm install --registry=https://registry.npm.taobao.org/
-    - npm run build
+    - yarn config set cache-folder $(pwd)/.yarn-cache
+    - yarn install
+    - yarn run build
     - 'echo export default $CI_PIPELINE_ID > version.js'
-    - npm publish --registry=http://192.168.88.9:8081/repository/npmlocal/
+    - yarn publish --registry=http://192.168.88.9:8081/repository/npmlocal/
   tags:
-    - docker  
+    - docker 
