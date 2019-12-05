@@ -48,7 +48,8 @@ export default {
     },
     setColumnStyle(column, columnIndex, width) {
       const style = {}
-      style.width = width + 'px'
+      style.minWidth = width + 'px'
+      style.maxWidth = width + 'px'
 
       // 如果有横向滚动条 设置左右定位元素的位置
       if (this.bodyOverflowX) {

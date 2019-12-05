@@ -42,9 +42,12 @@ export default {
   inject: ['table'],
   computed: {
     style() {
+      const height = parseInt(this.table.height)
+      const maxHeight = parseInt(this.table.maxHeight)
       return {
         '--width': this.table.minWidth + 'px',
-        maxHeight: parseInt(this.table.height) + 'px'
+        height: height ? height + 'px' : '',
+        maxHeight: maxHeight ? maxHeight + 'px' : ''
       }
     }
   },

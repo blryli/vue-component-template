@@ -6,7 +6,7 @@
     <!-- header -->
     <div class="v-table__header-wrapper">
       <v-table-header ref="TableHeader" />
-      <div v-show="bodyOverflowY" class="v-table__header-gutter"></div>
+      <div v-show="bodyOverflowY" class="v-table__header-gutter" />
     </div>
     <!-- body -->
     <div class="v-table__body-wrapper">
@@ -40,6 +40,7 @@ export default {
   props: {
     data: { type: Array, default: () => [] },
     height: { type: [String, Number], default: 400 },
+    maxHeight: { type: [String, Number], default: 0 },
     highlightCurrentRow: { type: Boolean, default: false },
     border: { type: Boolean, default: false },
     keyField: { type: String, default: '' },
