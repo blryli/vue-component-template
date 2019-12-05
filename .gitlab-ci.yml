@@ -6,17 +6,8 @@ publish:
   cache:
     key: vue-table-virtual-scroller
     paths:
-      - $(pwd)/.npm-cache
       - node_modules/
   script:
-    - npm config set registry 'https://registry.npm.taobao.org'
-    - npm config set sass_binary_site "https://npm.taobao.org/mirrors/node-sass/"
-    - npm config set phantomjs_cdnurl "http://cnpmjs.org/downloads"
-    - npm config set electron_mirror "https://npm.taobao.org/mirrors/electron/"
-    - npm config set sqlite3_binary_host_mirror "https://foxgis.oss-cn-shanghai.aliyuncs.com/"
-    - npm config set profiler_binary_host_mirror "https://npm.taobao.org/mirrors/node-inspector/"
-    - npm config set chromedriver_cdnurl "https://cdn.npm.taobao.org/dist/chromedriver"
-    - npm config set cache-folder $(pwd)/.npm-cache
     - npm install
     - npm run build
     - 'echo export default $CI_PIPELINE_ID > version.js'
