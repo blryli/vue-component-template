@@ -7,6 +7,7 @@ publish:
     paths:
       - node_modules/
   script:
+    - npm install --registry=https://registry.npm.taobao.org/
     - npm run build
     - 'echo export default $CI_PIPELINE_ID > version.js'
     - npm publish --registry=http://192.168.88.9:8081/repository/npmlocal/
