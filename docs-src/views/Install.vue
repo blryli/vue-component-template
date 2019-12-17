@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  name: 'About',
+  linkName: '安装',
   order: 2
 }
 </script>

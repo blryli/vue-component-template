@@ -1,11 +1,18 @@
 <template>
   <div class="home">
+    <el-form inline>
+      <el-form-item label="文本溢出启用tooltip">
+        <el-switch v-model="showOverflowTooltip" />
+      </el-form-item>
+    </el-form>
+
     <v-table
+      v-if="update"
       ref="table"
       height="400"
       key-field="gNo"
       :data="data"
-      show-overflow-tooltip
+      :show-overflow-tooltip="showOverflowTooltip"
       highlight-current-row
       @selection-change="selectionChange"
       @row-click="rowClick"
@@ -17,7 +24,6 @@
         </template>
       </v-table-column>
       <v-table-column type="index" :min-width="60" fixed="left" label="序号">
-        <template slot="header">这是序号</template>
         <template slot-scope="scope">{{ scope.$index + 1 }}</template>
       </v-table-column>
       <v-table-column label="标题1" prop="asn" :min-width="100" />
@@ -25,8 +31,8 @@
         <template slot-scope="scope">{{ scope.row.name }}</template>
       </v-table-column>
       <v-table-column label="标题3" prop="city" :min-width="100" />
-      <v-table-column label="标题4" show-overflow-tooltip :min-width="150">
-        <template>溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字</template>
+      <v-table-column label="标题4" :min-width="150">
+        <template slot-scope="scope">{{ scope.row.datetime }}</template>
       </v-table-column>
       <v-table-column label="标题5" prop="datetime" :min-width="150" />
       <v-table-column label="标题6" prop="name" :min-width="150" />
@@ -36,18 +42,18 @@
       <v-table-column v-for="(d, i) in forData" :key="i" :label="d.label" :min-width="150" :render-header="renderHeader">
         <template slot-scope="scope">{{ scope.row[d.prop] }}</template>
       </v-table-column>
-      <v-table-column label="操作" :min-width="100">
+      <v-table-column label="操作" fixed="right" :min-width="100">
         <template>
           <el-button type="text" icon="el-icon-edit" />
           <el-button type="text" icon="el-icon-delete" />
         </template>
       </v-table-column>
     </v-table>
-    <p>
-      <el-button type="primary" @click="checked = !checked">{{ `切换为${checked ? '单选' : '多选'}` }}</el-button>
-      <el-button type="primary" @click="toggleRowSelection">选中第二项</el-button>
-      <el-button type="primary" @click="toggleAllSelection">切换全选</el-button>
-    </p>
+    <div class="handle">
+      <el-button @click="checked = !checked">{{ `切换为${checked ? '单选' : '多选'}` }}</el-button>
+      <el-button @click="toggleRowSelection">选中第二项</el-button>
+      <el-button @click="toggleAllSelection">切换全选</el-button>
+    </div>
   </div>
 </template>
 
@@ -55,7 +61,7 @@
 import mock from 'mockjs'
 
 export default {
-  name: 'Home',
+  linkName: '主页',
   data() {
     return {
       radio: null,
@@ -65,7 +71,17 @@ export default {
         { prop: 'city', label: '标题' },
         { prop: 'name', label: '标题' },
         { prop: 'message', label: '标题' }
-      ]
+      ],
+      update: true,
+      showOverflowTooltip: true
+    }
+  },
+  watch: {
+    showOverflowTooltip() {
+      this.update = false
+      this.$nextTick(() => {
+        this.update = true
+      })
     }
   },
   mounted() {
@@ -79,14 +95,12 @@ export default {
             'city': '@city',
             'datetime': '@datetime',
             'asn': /asn10000[1-9]/,
-            'gNo|+1': 1,
-            'contrItem': '5',
-            'codeTs': '8516605000'
+            'gNo|+1': 1
           }
         ]
       }).array
       console.log(this.data)
-    }, 1000)
+    }, 500)
   },
   methods: {
     renderHeader(h, { column, $index }) {
@@ -115,5 +129,8 @@ export default {
 }
 .v-table .cell .el-radio__label{
   display: none;
+}
+.handle{
+  margin-top: 20px;
 }
 </style>
