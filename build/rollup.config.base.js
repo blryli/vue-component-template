@@ -5,7 +5,7 @@ import cjs from 'rollup-plugin-commonjs'
 import replace from 'rollup-plugin-replace'
 import css from 'rollup-plugin-css-only'
 import CleanCSS from 'clean-css'
-import { writeFileSync, readFileSync } from 'fs'
+import fs from 'fs'
 
 const config = require('../package.json')
 
@@ -27,8 +27,9 @@ export default {
     css({
       output(style) {
         const file = require.resolve('vue-virtual-scroller/dist/vue-virtual-scroller.css')
-        style += readFileSync(file, { encoding: 'utf8' })
-        writeFileSync(`dist/${name}.css`, new CleanCSS().minify(style).styles)
+        style += fs.readFileSync(file, { encoding: 'utf8' })
+        !fs.existsSync('dist') && fs.mkdirSync('dist')
+        fs.writeFileSync(`dist/${name}.css`, new CleanCSS().minify(style).styles)
       }
     }),
     babel({
