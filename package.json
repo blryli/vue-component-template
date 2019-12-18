@@ -1,5 +1,5 @@
 {
-  "name": "vue-component-template",
+  "name": "vue-table-virtual-scroller",
   "version": "0.1.6",
   "description": "表格虚拟滚动",
   "keywords": [
@@ -12,9 +12,9 @@
   "private": false,
   "author": "blryli",
   "license": "MIT",
-  "main": "dist/vue-component-template.umd.js",
-  "module": "dist/vue-component-template.esm.js",
-  "unpkg": "dist/vue-component-template.min.js",
+  "main": "dist/vue-table-virtual-scroller.umd.js",
+  "module": "dist/vue-table-virtual-scroller.esm.js",
+  "unpkg": "dist/vue-table-virtual-scroller.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.es.js --watch",
     "build": "cross-env NODE_ENV=production npm run build:browser && npm run build:es && npm run build:umd",
@@ -29,12 +29,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/blryli/vue-component-template.git"
+    "url": "https://github.com/blryli/vue-table-virtual-scroller.git"
   },
   "bugs": {
-    "url": "https://github.com/blryli/vue-component-template/issues"
+    "url": "https://github.com/blryli/vue-table-virtual-scroller/issues"
   },
-  "homepage": "https://blryli.github.com/vue-component-template",
+  "homepage": "https://blryli.github.com/vue-table-virtual-scroller",
   "dependencies": {
     "vue": "^2.6.10",
     "vue-virtual-scroller": "^1.0.0-rc.2"
