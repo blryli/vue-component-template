@@ -7,11 +7,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: set token
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     - name: Build and Deploy
-      env:
+      run:
         npm install && npm run demo:build
         git add .
         git commit -m 'push demo'
