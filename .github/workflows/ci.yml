@@ -7,13 +7,12 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-
-    - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@master
+    - name: set token
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
-        BUILD_SCRIPT: npm install && npm run build && npm run demo:build
+    - name: Build and Deploy
+      env:
+        npm install && npm run demo:build
+        git add .
+        git commit -m 'push demo'
+        git push      
