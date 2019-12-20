@@ -24,7 +24,7 @@
 <script>
 import screenfull from 'screenfull'
 import routes from './views/routes'
-const config = require('../package.json')
+import { config } from './config'
 
 export default {
   data() {

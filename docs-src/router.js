@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import Home from './views/Home.vue'
-// import About from './views/About.vue'
+// import Install from './views/Install.vue'
 import routes from './views/routes'
 
 Vue.use(VueRouter)
 
 // const routes = [
 //   { path: '/', name: 'home', component: Home },
-//   { path: '/about', name: 'about', component: About },
+//   { path: '/install', name: 'install', component: Install },
 //   { path: '*', redirect: '/' }
 // ]
 
