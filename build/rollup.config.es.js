@@ -5,8 +5,7 @@ const config = Object.assign({}, base, {
     name,
     file: file('esm'),
     format: 'es'
-  },
-  external: ['vue-virtual-scroller']
+  }
 })
 
 export default config

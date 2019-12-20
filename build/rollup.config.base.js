@@ -26,8 +26,6 @@ export default {
     }),
     css({
       output(style) {
-        const file = require.resolve('vue-virtual-scroller/dist/vue-virtual-scroller.css')
-        style += fs.readFileSync(file, { encoding: 'utf8' })
         !fs.existsSync('dist') && fs.mkdirSync('dist')
         fs.writeFileSync(`dist/${name}.css`, new CleanCSS().minify(style).styles)
       }
