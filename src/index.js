@@ -1,11 +1,9 @@
-import Table from './components/Table.vue'
-import TableColumn from './components/TableColumn'
+import Component from './lib/component.vue'
 
-const components = [Table, TableColumn]
+const components = [Component]
 
 export {
-  Table,
-  TableColumn
+  Component
 }
 
 const install = function(Vue) {

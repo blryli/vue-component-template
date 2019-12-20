@@ -6,11 +6,7 @@ import('../package.json').then(item => {
   import(`../dist/${item.name}.css`)
 })
 
-import ElementUI from 'element-ui'
-import 'element-ui/packages/theme-chalk/lib/index.css'
-
 Vue.use(Components)
-Vue.use(ElementUI, { size: 'small' })
 
 new Vue({
   router,

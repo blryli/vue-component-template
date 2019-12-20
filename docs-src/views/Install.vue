@@ -1,6 +1,8 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <div class="container">
+      <h2>install</h2>
+    </div>
   </div>
 </template>
 
@@ -11,3 +13,13 @@ export default {
   order: 2
 }
 </script>
+
+<style lang="scss">
+.about{
+  padding: 20px 40px;
+}
+.container{
+  padding: 20px;
+  background-color: lighten($primary-color, 50%);
+}
+</style>
