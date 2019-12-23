@@ -7,13 +7,14 @@
 
 <script>
 export default {
-  props: {
-    title: { type: String, required: true }
-  },
-
   data() {
     return {
       open: false
+    }
+  },
+  computed: {
+    title() {
+      return this.open ? '隐藏代码' : '显示代码'
     }
   }
 }
@@ -35,7 +36,7 @@ export default {
 
   &:hover {
     color: black;
-    background: #f8f8f8;
+    background: #f7f7f7;
   }
 }
 

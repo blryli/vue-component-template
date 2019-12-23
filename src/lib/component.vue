@@ -1,19 +1,20 @@
 <template>
   <div class="component">
-    vue component
+    {{ msg }}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'VComponent'
+  name: 'VComponent',
+  props: {
+    msg: { type: String, default: '' }
+  }
 }
 </script>
 
 <style scoped>
 .component{
-  padding: 40px;
-  border: 1px solid #ddd;
-  background-color: #fff;
+  font-size: 14px;
 }
 </style>

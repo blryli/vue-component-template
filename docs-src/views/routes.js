@@ -1,5 +1,6 @@
 const routerFiles = require.context('./', false, /\.vue$/)
 
+// 自动组装路由
 let routes = routerFiles.keys().reduce((acc, filePath) => {
   const view = routerFiles(filePath).default
   const { name, linkName, order = 0 } = view

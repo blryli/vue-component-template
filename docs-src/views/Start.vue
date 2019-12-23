@@ -3,10 +3,6 @@
     <section class="snippets">
       <div class="section-content">
         <CodeSnippet class="snippet" :code="mainSnippet" lang="js" />
-        <div class="plus">+</div>
-        <CodeSnippet class="snippet" :code="componentSnippet" lang="html" />
-        <div class="plus">+</div>
-        <CodeSnippet class="snippet" :code="styleSnippet" lang="scss" />
       </div>
     </section>
   </div>
@@ -14,24 +10,21 @@
 
 <script>
 import CodeSnippet from '../components/CodeSnippet.vue'
-import { config } from '../config'
-
-const nameToUpperCase = config.name.split('-').reduce((acc, cur) => acc + cur.replace(cur[0], cur[0].toUpperCase()), '')
+import { config, upName } from '../config'
 
 const mainSnippet = `
 import Vue from 'vue'
-import ${nameToUpperCase} from '${config.name}'
+import App from './App.vue'
+import ${upName} from '${config.name}'
+import '${config.name}.css'
 
-Vue.use(${nameToUpperCase})
+Vue.use(${upName})
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+});
 `
-const componentSnippet = `
-<template>
-  <v-component />
-</template>
-`
-
-const styleSnippet = ``
-
 export default {
   name: 'Start',
   linkName: '上手',
@@ -41,9 +34,7 @@ export default {
   },
   data() {
     return {
-      mainSnippet,
-      componentSnippet,
-      styleSnippet
+      mainSnippet
     }
   }
 }

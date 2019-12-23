@@ -15,7 +15,7 @@
 
     <section class="more">
       <div class="section-content">
-        And much <a href="https://github.com/Akryum/v-tooltip#usage">More</a>!
+        了解 <a :href="`https://github.com/${config.author}/${config.name}`">更多</a>!
       </div>
     </section>
   </div>
@@ -32,6 +32,9 @@ export default {
       routes: routes.filter(route => route.linkName),
       config
     }
+  },
+  created() {
+    document.title = config.name + ' demo'
   },
   methods: {
     toggleFullscreen(event) {
@@ -62,6 +65,12 @@ header {
   }
 }
 
+.page{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 section {
   .section-content {
     margin: 0 42px;
@@ -78,7 +87,9 @@ section {
 
     a {
       display: inline-block;
-      padding: 8px 16px;
+      padding: 0 16px;
+      height: 36px;
+      line-height: 36px;
       color: white;
       background: lighten($primary-color, 10%);
       border-radius: 3px;
@@ -96,22 +107,18 @@ section {
 
 .collapse {
   .section-content {
-    padding: 12px 0 64px 0;
+    padding: 12px 0 40px 0;
   }
 }
 
 h1 {
+  margin-top: 0;
   color: white;
   font-weight: normal;
   text-align: center;
-  margin: 0 0 32px;
 }
 
 h2 {
-  &:first-child {
-    margin-top: 0;
-  }
-
   font-weight: normal;
 }
 
@@ -123,68 +130,6 @@ a {
   &:hover {
     color: lighten($primary-color, 10%);
   }
-}
-
-button,
-input {
-  font-size: inherit;
-  font-family: inherit;
-  border: none;
-  outline: none;
-  padding: 12px 24px;
-  border-radius: 2px;
-}
-
-button {
-  color: $md-grey;
-  background: white;
-  border: solid 2px $md-grey;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  transition: background .3s;
-
-  &:hover {
-    background: lighten($md-grey, 30%);
-  }
-}
-
-.btn {
-  padding: 6px 12px;
-  display: inline-block;
-  background: $primary-color;
-  color: white;
-  cursor: pointer;
-  border-radius: 3px;
-
-  &:hover {
-    color: white;
-    background: lighten($primary-color, 10%);
-  }
-}
-
-input {
-  background: white;
-  display: block;
-  margin-bottom: 12px;
-  width: 100%;
-  box-sizing: border-box;
-  border-bottom: solid 2px $md-grey-300;
-  border-right: solid 1px $md-grey-100;
-  text-align: left;
-
-  &:focus {
-    border-bottom-color: $primary-color;
-  }
-}
-
-label input {
-  display: inline-block;
-  width: auto;
-}
-
-.form {
-  margin-bottom: 12px;
 }
 
 .command {
@@ -209,59 +154,18 @@ label input {
   margin: 12px;
 }
 
-.demo,
 .snippets {
-  margin: 0 42px;
-}
-
-.snippets {
-  background: #f9f9f9;
+  background: #f6f6f6;
+  border: 1px solid #f6f6f6;
   margin-bottom: 42px;
   border-radius: 0 0 3px 3px;
 }
 
 .demo {
-  background: #eee;
-  margin-top: 42px;
+  background: white;
+  margin-top: 12px;
+  border: 1px solid #eee;
   border-radius: 3px 3px 0 0;
-
-  .section-content {
-    text-align: center;
-    max-width: 560px;
-    margin: auto;
-  }
-
-  h2 {
-    margin-bottom: 24px;
-  }
-
-  button {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    padding: 0;
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 16px;
-    transform: rotate(-20deg);
-
-    &.b2 {
-      transform: rotate(30deg);
-    }
-
-    &.b3 {
-      transform: rotate(-5deg);
-    }
-
-    &.popover-btn {
-      background: #333;
-      color: #eee;
-      border-color: #999;
-    }
-  }
 }
 
 .more {

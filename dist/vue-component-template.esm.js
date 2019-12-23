@@ -5,7 +5,13 @@
 //
 //
 var script = {
-  name: 'VComponent'
+  name: 'VComponent',
+  props: {
+    msg: {
+      type: String,
+      default: ''
+    }
+  }
 };
 
 function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
@@ -106,7 +112,7 @@ var __vue_render__ = function __vue_render__() {
 
   return _c("div", {
     staticClass: "component"
-  }, [_vm._v("\n  vue component\n")]);
+  }, [_vm._v("\n  " + _vm._s(_vm.msg) + "\n")]);
 };
 
 var __vue_staticRenderFns__ = [];
@@ -116,7 +122,7 @@ __vue_render__._withStripped = true;
 var __vue_inject_styles__ = undefined;
 /* scoped */
 
-var __vue_scope_id__ = "data-v-2b322fe9";
+var __vue_scope_id__ = "data-v-31558c86";
 /* module identifier */
 
 var __vue_module_identifier__ = undefined;

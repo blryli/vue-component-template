@@ -9,6 +9,7 @@ import('../package.json').then(item => {
 Vue.use(Components)
 
 new Vue({
+  el: '#app',
   router,
   render: h => h(App)
-}).$mount('#app')
+})

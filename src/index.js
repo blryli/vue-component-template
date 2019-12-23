@@ -1,6 +1,8 @@
 import Component from './lib/component.vue'
 
-const components = [Component]
+const components = [
+  Component
+]
 
 export {
   Component
