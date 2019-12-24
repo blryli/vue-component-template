@@ -36,7 +36,7 @@ export default {
 
   &:hover {
     color: black;
-    background: #f7f7f7;
+    background: #f8f8f8;
   }
 }
 

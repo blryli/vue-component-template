@@ -1,6 +1,6 @@
 <template>
   <div class="page-home page">
-    <h2>Title</h2>
+    <h2>Description</h2>
     <section class="demo">
       <div class="section-content">
         <v-component msg="vue component" />

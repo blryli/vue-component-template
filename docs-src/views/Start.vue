@@ -27,8 +27,6 @@ new Vue({
 `
 export default {
   name: 'Start',
-  linkName: '上手',
-  order: 2,
   components: {
     CodeSnippet
   },

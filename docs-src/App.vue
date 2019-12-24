@@ -4,7 +4,7 @@
       <h1>{{ config.name }}</h1>
       <div class="command">npm install --save {{ config.name }}</div>
       <section class="nav">
-        <router-link v-for="d in routes" :key="d.path" :to="d.path">{{ d.linkName }}</router-link>
+        <router-link v-for="d in routes" :key="d.path" :to="d.path">{{ d.name }}</router-link>
         <a :href="`https://github.com/${config.author}/${config.name}#usage`">文档</a>
         <a @click="toggleFullscreen">切换全屏</a>
       </section>
@@ -23,13 +23,13 @@
 
 <script>
 import screenfull from 'screenfull'
-import routes from './views/routes'
+import { routes } from './router'
 import { config } from './config'
 
 export default {
   data() {
     return {
-      routes: routes.filter(route => route.linkName),
+      routes: routes.filter(route => route.name),
       config
     }
   },
@@ -155,8 +155,8 @@ a {
 }
 
 .snippets {
-  background: #f6f6f6;
-  border: 1px solid #f6f6f6;
+  background: #f7f7f7;
+  border: 1px solid #f7f7f7;
   margin-bottom: 42px;
   border-radius: 0 0 3px 3px;
 }
