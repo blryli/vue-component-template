@@ -10,9 +10,7 @@ tests/
 .eslintignore
 .eslintrc.js
 .gitignore
-.gitlab-ci.yml
 .npmignore
-.npmrc
 .babelrc
 babel.config.js
 jest.config.js

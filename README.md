@@ -1,34 +1,33 @@
 # vue-component-template
 
-## Project setup
+## 设置
+
+### package.json
+
+修改name为你的组件名字
+
+```json
+{
+  "name": "组件名字"
+}
 ```
+
+### 组件运行
+
+```js
 npm install
+npm run dev
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### 组件打包发布
 
-### Compiles and minifies for production
-```
+```js
 npm run build
+npm publish
 ```
 
-### Run your tests
-```
-npm run test
-```
+### demo
 
-### Lints and fixes files
+```js
+npm run demo:dev
 ```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
