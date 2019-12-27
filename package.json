@@ -6,6 +6,9 @@
     "vue",
     "vuejs",
     "rollup",
+    "eslint",
+    "gihub-pages",
+    "gihub-actions",
     "template",
     "component"
   ],

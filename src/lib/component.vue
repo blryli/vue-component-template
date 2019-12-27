@@ -1,6 +1,6 @@
 <template>
   <div class="component">
-    {{ msg }}
+    <div class="component-content">{{ msg }}</div>
   </div>
 </template>
 
@@ -13,8 +13,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .component{
   font-size: 14px;
+  .component-content{
+    color: #40b883;
+  }
 }
 </style>
