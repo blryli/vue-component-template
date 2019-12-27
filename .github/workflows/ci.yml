@@ -7,13 +7,15 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - run: npm ci
-    - run: npm run build:es
-    - run: npm run demo:build
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.0
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
       env:
-        ACTIONS_DEPLOY_KEY: ${{secrets.ACTIONS_DEPLOY_KEY}}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: docs
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        BRANCH: gh-pages
+        FOLDER: docs
+        CLEAN: true
+        BUILD_SCRIPT: npm install && npm run build:es && npm run demo:build
