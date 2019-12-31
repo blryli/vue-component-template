@@ -34,7 +34,7 @@ export default {
     }
   },
   created() {
-    document.title = config.name + ' demo'
+    document.title = config.name + '-demo'
   },
   methods: {
     toggleFullscreen(event) {
