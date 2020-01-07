@@ -1,19 +1,16 @@
 name: GitHub Actions Build and Deploy Demo
-on:
-  push:
-    branches:
-      - master
+on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - run: npm ci
-    - run: npm run build:es
-    - run: npm run demo:build
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.0
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v2
       env:
-        ACTIONS_DEPLOY_KEY: ${{secrets.ACTIONS_DEPLOY_KEY}}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: docs
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: docs
+        BUILD_SCRIPT: npm install && npm run build:es && npm run demo:build
